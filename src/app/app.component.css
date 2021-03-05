@@ -1,0 +1,19 @@
+* {
+  user-select: none;
+}
+@media (max-width: 425px) {
+  .query-condition {
+    width: 100%;
+  }
+  .email-content {
+    margin: 0 -15px;
+  }
+}
+@media (min-width: 426px) {
+  .query-condition {
+    max-width: 20rem;
+  }
+}
+.btn-search {
+  background-color: rgb(16 22 26 / 10%);
+}

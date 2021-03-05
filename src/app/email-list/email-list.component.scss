@@ -1,0 +1,199 @@
+$bg-color: hsl(0, 0%, 94%);
+$color-gray0: hsl(0, 0%, 0%);
+$color-gray50: hsl(0, 0%, 50%);
+$color-hover: blue;
+$break-point: 768px;
+
+.f-bold {
+  font-weight: bold;
+  color: $color-gray0;
+}
+.rotate-90 {
+  transform: rotate(90deg);
+}
+.rotate-180 {
+  transform: rotate(180deg);
+}
+.mat-header-cell {
+  background-color: $bg-color;
+  font-size: 1rem;
+}
+.table-head-wrapper {
+  background-color: $bg-color;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.table-head > div {
+  padding: 1rem 0;
+  color: $color-gray50;
+  &:hover {
+    cursor: pointer;
+    color: $color-gray0;
+  }
+}
+.arrow01 {
+  width: 0.7rem;
+}
+.table-wrapper {
+  max-height: 40rem;
+}
+.table-content-wrapper {
+  &:not(:first-of-type) {
+    border-top: 1px solid $bg-color;
+  }
+}
+.reply {
+  text-align: center;
+  color: white;
+  background-color: $color-gray50;
+  padding: 0 0.35rem;
+}
+@media (hover: hover) and (pointer: fine) {
+  .table-content:hover {
+    color: $color-hover;
+    background-color: $bg-color;
+    cursor: pointer;
+  }
+}
+// For small device.
+@media (max-width: $break-point) {
+  p {
+    padding: 0 15px;
+  }
+  .table-head {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(4, auto) 1fr;
+    grid-template-rows: auto;
+  }
+  .table-head > div:not(:last-of-type):after {
+    display: inline-block;
+    content: " ";
+    position: relative;
+    width: 1px;
+    height: 1.2rem;
+    background-color: $color-gray50;
+    vertical-align: middle;
+    margin: 0 0.5rem;
+  }
+  .table-content {
+    max-height: 22rem;
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr 1rem auto;
+    grid-template-rows: auto auto auto 1fr;
+    grid-template-areas:
+      "sp from clip date"
+      "sp to-reply to-reply to-reply"
+      "subject subject subject subject"
+      "content content content content";
+    column-gap: 0.5rem;
+    row-gap: 0.1rem;
+    &:active {
+      background-color: whitesmoke;
+    }
+  }
+  .col-mail-sp {
+    grid-area: sp;
+  }
+  .col-from {
+    grid-area: from;
+  }
+  .col-clip {
+    grid-area: clip;
+  }
+  .col-date {
+    grid-area: date;
+    .arrow02 {
+      display: inline-block;
+    }
+  }
+  .col-to-reply {
+    grid-area: to-reply;
+    display: grid;
+    align-items: center;
+    grid-template: auto / 1fr auto;
+    grid-column-gap: 1.5rem;
+    .reply {
+      font-size: 0.8rem;
+    }
+  }
+  .col-subject {
+    grid-area: subject;
+  }
+  .col-content {
+    grid-area: content;
+  }
+  .x-content {
+    border-top: 1px dashed $color-gray50;
+    max-height: 15rem;
+    overflow: auto;
+  }
+}
+// Tablet or larger device
+@media (min-width: $break-point + 1) {
+  .table-head {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1.4fr 2fr 1rem 8rem;
+    grid-template-rows: auto;
+    column-gap: 2rem;
+    grid-template-areas: "from to subject . date";
+  }
+  .head-from {
+    grid-area: from;
+  }
+  .head-to {
+    grid-area: to;
+  }
+  .head-subject {
+    grid-area: subject;
+  }
+  .head-date {
+    grid-area: date;
+  }
+  .table-content {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1.4fr 2fr 1rem 8rem;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "from to-reply subject clip date"
+      "content content content content content";
+    column-gap: 2rem;
+    row-gap: 0.1rem;
+  }
+  .col-mail-sp {
+    display: none;
+  }
+  .col-from {
+    grid-area: from;
+  }
+  .col-clip {
+    grid-area: clip;
+  }
+  .col-date {
+    grid-area: date;
+    .arrow02 {
+      display: none;
+    }
+  }
+  .col-to-reply {
+    grid-area: to-reply;
+    display: grid;
+    align-items: center;
+    grid-template: auto / 1fr auto;
+    grid-column-gap: 1.5rem;
+    .reply {
+      font-size: 0.8rem;
+    }
+  }
+  .col-subject {
+    grid-area: subject;
+  }
+  .col-content {
+    grid-area: content;
+    border-top: 1px dashed $color-gray50;
+  }
+}

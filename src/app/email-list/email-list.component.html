@@ -1,0 +1,75 @@
+<p>Results: <b>{{total}}</b>mail(s)</p>
+<mat-divider></mat-divider>
+<div *ngIf="data.length" class="container-fluid table-wrapper overflow-auto">
+  <div class="row table-head-wrapper">
+    <div class="col table-head">
+      <div class="head-from" (click)="doSort('from')">
+        <span [ngClass]="{'f-bold': sorts.from !== undefined}">From</span>
+        <div *ngIf="sorts.from !== undefined" class="d-inline-block arrow01 ml-1" [ngClass]="{'rotate-180':sorts.from == false}">
+          <mat-icon [inline]="true" svgIcon="arrow01_hennge"></mat-icon>
+        </div>
+      </div>
+      <div class="head-to" (click)="doSort('to')">
+        <span [ngClass]="{'f-bold': sorts.to !== undefined}">To</span>
+        <div *ngIf="sorts.to !== undefined" class="d-inline-block arrow01 ml-1" [ngClass]="{'rotate-180':sorts.to == false}">
+          <mat-icon [inline]="true" svgIcon="arrow01_hennge"></mat-icon>
+        </div>
+      </div>
+      <div class="head-subject" (click)="doSort('subject')">
+        <span [ngClass]="{'f-bold': sorts.subject !== undefined}">Subject</span>
+        <div *ngIf="sorts.subject !== undefined" class="d-inline-block arrow01 ml-1" [ngClass]="{'rotate-180':sorts.subject == false}">
+          <mat-icon [inline]="true" svgIcon="arrow01_hennge"></mat-icon>
+        </div>
+      </div>
+      <div class="head-date" (click)="doSort('date')">
+        <span [ngClass]="{'f-bold': sorts.date !== undefined}">Date</span>
+        <div *ngIf="sorts.date !== undefined" class="d-inline-block arrow01 ml-1" [ngClass]="{'rotate-180':sorts.date == false}">
+          <mat-icon [inline]="true" svgIcon="arrow01_hennge"></mat-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngFor="let dt of data" class="table-content-wrapper row">
+    <div class="table-content w-100 p-3" (click)="toggleContent(dt)">
+      <div class="col-mail-sp">
+        <div style="width: 1rem;">
+          <mat-icon [inline]="true" svgIcon="mailsp_hennge"></mat-icon>
+        </div>
+      </div>
+      <div class="col-from text-truncate" [ngClass]="{'f-bold': sorts.from !== undefined}">
+        {{dt.from}}
+      </div>
+      <div class="col-to-reply" [ngClass]="{'f-bold': sorts.to !== undefined}">
+        <div class="d-inline-block text-truncate">{{dt.to}}</div>
+        <div class="d-inline-block rounded text-truncate reply">+1</div>
+      </div>
+      <div class="col-subject text-truncate" [ngClass]="{'f-bold': sorts.subject !== undefined}">
+        {{dt.subject}}
+      </div>
+      <div class="col-clip d-inline-block">
+        <mat-icon [inline]="true" *ngIf="dt.attachment" svgIcon="attachment_hennge"></mat-icon>
+      </div>
+      <div class="col-date" [ngClass]="{'f-bold': sorts.date !== undefined}">
+        {{dt.date | beautifyDate}}
+        <div style="width: 0.3rem;" class="arrow02" [ngClass]="{'rotate-90': dt.showContent}">
+          <mat-icon [inline]="true" svgIcon="arrow02_hennge"></mat-icon>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="dt.showContent" class="x-content p-3">
+      <span>{{dt.subject}}: </span><br>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate ducimus esse
+      neque cum libero in. Vel nihil
+      quae iste dicta laborum! Libero exercitationem neque alias aliquid cum repudiandae corporis commodi.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate labore vitae ullam assumenda molestias
+      tenetur cum consequatur quia quos mollitia? Non architecto deleniti fugiat numquam minus earum, veritatis atque
+      aut.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit quisquam ea unde ipsum culpa. Exercitationem
+      beatae totam provident, dolor impedit, explicabo, nobis deserunt neque est reprehenderit fugiat quas harum
+      maxime.
+    </div>
+  </div>
+</div>
+<!-- Only displayed when no result found -->
+<div *ngIf="!data.length" class="d-flex justify-content-center align-items-center" style="height: 50vh;">
+  <img src="/assets/logo.png" alt="Mail Archiver">
+</div>

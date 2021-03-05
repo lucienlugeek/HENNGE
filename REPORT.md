@@ -1,0 +1,13 @@
+- As an Angular developer, I give priority to using **Angular** to accomplish this task.
+- Use compatible material calendar component **@angular/material/calendar** to quickly build the calendar. Thanks to this component, I can utilize two different styles on calendar that applied on desktop and mobile respectively.
+- In addition to which on the above,  I use the most popular tool **moment.js**  for date comparisons and localize display.
+- I generate the mock date dynamically to achieve the design of the date in prototype.
+- According to the prototype, I realize that this page should be responsive,  then I use **bootstrap** to build the page quickly.
+- The main CSS file is written in **SASS**.
+- I use **CSS media query** and set the breakpoint by 768px to distinguish where the page is displayed on desktop or mobile device.
+- The area's layout where on the above of the result area is written by **Flex**.
+- As the position of items where located in results will change along with the device's size, I use **CSS3 Grid** to draw the result part to rearrange layouts easily.
+
+-  I use **Angular Pipe** to display the dates within the results by different formats depending on how far the date is offset by today.
+- When click the header to sort results by ascent or descent, the small arrow icon which beside the header item will rotate back and forth at the same time.
+- On mobile or small device, when touch the item in the header to switch displaying the emails' content, the most right arrow icon will rotate back and forth at the same time.
